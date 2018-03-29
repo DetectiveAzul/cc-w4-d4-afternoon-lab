@@ -2,7 +2,7 @@ class House
   attr_reader :id
   attr_accessor :name, :url
   def initialize(options)
-    @id = options['id'] unless options['id'] == nil
+    @id = options['id'].to_i unless options['id'] == nil
     @name = options['name']
     @url = options['url'] unless options['url'] == nil
   end
@@ -34,6 +34,14 @@ class House
     WHERE id = $1"
     values = [@id]
     SqlRunner.run( sql, values )
+  end
+
+  def self.find(id)
+    sql = "SELECT * FROM houses
+    WHERE id = $1"
+    values = [@id]
+    result = SqlRunner.run( sql, values)
+    return result[0].map { |house| House.new(house) } unless result[0] == nil
   end
 
 end
