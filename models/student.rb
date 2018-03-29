@@ -49,12 +49,10 @@ class Student
   end
 
   def house()
-    sql = "SELECT * FROM houses
-    WHERE houses.id = $1"
-    values = [@id]
-    result = SqlRunner.run(sql, values)
-    return House.new(result.first) unless result.first == nil
+    house = House.find(@house_id)
+    return house
   end
+  
 
   def update()
     sql = "UPDATE students

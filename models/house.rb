@@ -39,9 +39,9 @@ class House
   def self.find(id)
     sql = "SELECT * FROM houses
     WHERE id = $1"
-    values = [@id]
+    values = [id]
     result = SqlRunner.run( sql, values)
-    return result[0].map { |house| House.new(house) } unless result[0] == nil
+    return House.new(result.first) unless result.first == nil
   end
 
 end
