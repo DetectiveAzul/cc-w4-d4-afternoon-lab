@@ -1,5 +1,5 @@
 <% @students.each do |student| %>
 <p>Name: <%="#{student.first_name} #{student.second_name}" %></p>
 <p>Age: <%="#{student.age}"%></p>
-<p>House: <%="#{student.house_id}"%></p>
+<p>House: <%="#{student.house().name}"%></p>
 <% end %>

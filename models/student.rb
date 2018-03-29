@@ -1,5 +1,5 @@
 require_relative('../db/sql_runner')
-
+require_relative('house')
 class Student
   attr_reader :id
   attr_accessor :first_name, :second_name, :house_id, :age
@@ -54,7 +54,15 @@ class Student
     values = [@id]
     result = SqlRunner.run(sql, values)
     return House.new(result.first) unless result.first == nil
+  end
 
+  def update()
+    sql = "UPDATE students
+    SET(first_name, second_name, house_id, age)
+    =($1, $2, $3, $4)
+    WHERE id = $5"
+    values = [@first_name, @second_name, @house_id, @age, @id]
+    SqlRunner.run(sql, values)
   end
 
 end

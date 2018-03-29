@@ -22,21 +22,21 @@ get '/students/:id' do
   @student = Student.find(params['id'].to_i)
   erb(:show)
 end
-#
-# get '/students/:id/edit' do
-#   @houses = House.all
-#   @student = Student.find(params['id'])
-#   erb(:edit)
-# end
-#
-# post '/students/:id' do
-#   student = Student.new(params)
-#   student.update
-#   redirect to "/students/#{params['id']}"
-# end
-#
-# post '/students/:id/delete' do
-#   student = Student.find(params['id'])
-#   student.delete
-#   redirect to '/students'
-# end
+
+get '/students/:id/edit' do
+  @houses = House.all
+  @student = Student.find(params['id'])
+  erb(:edit)
+end
+
+post '/students/:id' do
+  student = Student.new(params)
+  student.update
+  redirect to "/students/#{params['id']}"
+end
+
+post '/students/:id/delete' do
+  student = Student.find(params['id'])
+  student.delete
+  redirect to '/students'
+end
