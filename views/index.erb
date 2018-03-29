@@ -2,4 +2,6 @@
 <p>Name: <%="#{student.first_name} #{student.second_name}" %></p>
 <p>Age: <%="#{student.age}"%></p>
 <p>House: <%= student.house.name %></p>
+<a href="/students/<%=student.id%>"><button>Show</button></a>
 <% end %>
+<a href="/students/new"><button>New Student</button></a>

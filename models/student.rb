@@ -52,7 +52,7 @@ class Student
     house = House.find(@house_id)
     return house
   end
-  
+
 
   def update()
     sql = "UPDATE students
